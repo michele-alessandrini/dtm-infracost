@@ -106,24 +106,16 @@ Alongside with more technical pillars such as security, operational excellence, 
 
 The following table shows how the three major cloud providers - AWS, Azure and GCP 
 
-|  FinOps Domain | AWS | Azure | GCP
-|--|--|--|--|
-| Understanding Cloud Usage and Cost | Understanding Cloud Usage and Cost | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
-| Performance Tracking & Benchmarking | Understanding Cloud Usage and Cost | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
-| Real-Time Decision Making | Understanding Cloud Usage and Cost | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
-| Cloud Rate Optimization | Understanding Cloud Usage and Cost | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
-| Cloud Usage Optimization | Understanding Cloud Usage and Cost | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
-| Organizational Alignment | Understanding Cloud Usage and Cost | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
+FinOps Domain | AWS | Azure | GCP
+------------- | --- | ------| ---
+Understanding Cloud Usage and Cost | Cost Explorer, CUR | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
+Performance Tracking & Benchmarking | Cloudwatch, VPC Flow Logs, AWS Budget and Forecast | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
+Real-Time Decision Making | AWS Config, AWS Cost Anomaly Detection | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
+Cloud Rate Optimization | Reservation, Saving Plans, EDP | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
+Cloud Usage Optimization | CUR | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
+Organizational Alignment | AWS Organization | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
 
 It is worth to notice that all the FinOps domain reflects recommendations and approaches in all major providers. By embedding financial management into their (well) architecting frameworks, cloud providers highlight once more how pivotal cost is within system design when it comes public cloud. Cost becomes one of the pillars to consider and upon which to make informative decisions, with the same accuracy used to factor more traditional elements such as security ir operational excellence. 
-
-## AWS
-
--   Implement cloud financial management
--   Adopt a consumption model
--   Measure overall efficiency
--   Stop spending money on undifferentiated heavy lifting
--   Analyze and attribute expenditure
 
 
 # FinOps from the trenches
@@ -238,11 +230,11 @@ Using the SaaS version of the service allows also to access useful dashboards (a
 
 Transitioning to public cloud exposes DevOps and cloud engineers to a new consumption model - the pay-as-you-go model - that breaks the common procurement cycle of IT.  By doing so, shift to teams the accountability and responsibility of the costs of running cloud resources. 
 
-FinOps describes a framework that provides a set of practices and approaches needed to decode the ways in which cloud works and make the best out of all the benefits offered by the pay-as-yo-go-model such as elasticity and flexibilty. DevOps engineers and the business are required to be able to communicate using the same language when it comes to cloud costs and FinOps create the leverage playing field within the company. 
+FinOps describes a framework that provides a set of practices and approaches needed to decode the ways in which cloud works and make the best out of all the benefits offered by the pay-as-yo-go-model such as elasticity and flexibilty. DevOps engineers and the business are required to be able to communicate using the same language when it comes to cloud costs and FinOps create the leverage playing field to achive that. 
 
-All major cloud providers guide users through a set of best practices and capabilities that allows to implement FinOps also when it comes to the everyday's engineering job, which must necessarily include the analysis of the cost component both during the analysis and the execution of jobs.  Two examples of how that translates in possible approaches have been provided although many others may suit different teams' need and ways of working. 
+All major cloud providers offer capabilities that allows to embed FinOps in the everyday's job of engineers. Two examples of how that translates in practices have been provided although many others may suit different teams' need and ways of working. 
 
-The underlining foundational point is, therefore, not about what tool chain is used to implement FinOps or what cloud providers is the preferred one. Instead, engineers should focus in understanding that start analysing cost implications in their daily job can create a new perspective able to 
+Engineers should focus in understanding that start analysing cost implications in their daily job can create a new perspective able to contribute to architectural decisions, to facilitate the communication with the business and to exploit efficiently all the benefits of the public cloud.
 
 
 **References:** 
