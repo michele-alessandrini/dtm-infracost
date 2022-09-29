@@ -108,12 +108,12 @@ The following table shows how the three major cloud providers - AWS, Azure and G
 
 FinOps Domain | AWS | Azure | GCP
 ------------- | --- | ------| ---
-Understanding Cloud Usage and Cost | Cost Explorer, CUR | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
-Performance Tracking & Benchmarking | Cloudwatch, VPC Flow Logs, AWS Budget and Forecast | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
-Real-Time Decision Making | AWS Config, AWS Cost Anomaly Detection | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
-Cloud Rate Optimization | Reservation, Saving Plans, EDP | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
-Cloud Usage Optimization | CUR | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
-Organizational Alignment | AWS Organization | Understanding Cloud Usage and Cost |. Understanding Cloud Usage and Cost
+Understanding Cloud Usage and Cost | Cost Explorer | Microsoft Cost Management | Cost Management
+Performance Tracking & Benchmarking | AWS Budget and Forecast | Forecasts in Azure Cost Management and Billing  | Cost forecast for Google Cloud Billing
+Real-Time Decision Making | AWS Cost Anomaly Detection | Anomaly Detector | Cost Insight
+Cloud Rate Optimization | Reservation, Saving Plans | Azure Reservation | GCP Committed Use Discounts 
+Cloud Usage Optimization | Rightsize | Azure Advisor | Cloud instance rightsizing 
+Organizational Alignment | AWS Organization | Subscriptions | Google Cloud resource
 
 It is worth to notice that all the FinOps domain reflects recommendations and approaches in all major providers. By embedding financial management into their (well) architecting frameworks, cloud providers highlight once more how pivotal cost is within system design when it comes public cloud. Cost becomes one of the pillars to consider and upon which to make informative decisions, with the same accuracy used to factor more traditional elements such as security ir operational excellence. 
 
