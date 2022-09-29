@@ -104,7 +104,7 @@ In order to provide to users actionable advices, all hyper-scalers  have develop
 
 Alongside with more technical pillars such as security, operational excellence, reliability, and performance, financial operations is a domain that everyone covers. [^7]
 
-The following table shows how the three major cloud providers - AWS, Azure and GCP 
+Alongside with best practices, cloud platforms provide services that can be used to implement the different FinOps domains. The following table shows what main services of all the three major cloud providers - AWS, Azure and GCP - allows each domain to be implemented.  
 
 FinOps Domain | AWS | Azure | GCP
 ------------- | --- | ------| ---
@@ -115,7 +115,7 @@ Cloud Rate Optimization | Reservation, Saving Plans | Azure Reservation | GCP Co
 Cloud Usage Optimization | Rightsize | Azure Advisor | Cloud instance rightsizing 
 Organizational Alignment | AWS Organization | Subscriptions | Google Cloud resource
 
-It is worth to notice that all the FinOps domain reflects recommendations and approaches in all major providers. By embedding financial management into their (well) architecting frameworks, cloud providers highlight once more how pivotal cost is within system design when it comes public cloud. Cost becomes one of the pillars to consider and upon which to make informative decisions, with the same accuracy used to factor more traditional elements such as security ir operational excellence. 
+It is worth to notice that all providers cover with services all the domains. Also, by embedding financial management into their (well) architecting frameworks, cloud providers highlight once more how pivotal cost is within system design when it comes to public cloud. Cost becomes one of the pillars to consider and upon which to make informative decisions, with the same accuracy used to factor more traditional elements such as security or operational excellence. 
 
 
 # FinOps from the trenches
