@@ -2,7 +2,7 @@
 
 > FinOps is an evolving cloud financial management discipline and cultural practice that enables organisations to get maximum business value by helping engineering, finance, technology and business teams to collaborate on data-driven spending decisions. [^1]
 
-This essay will provide comprehensive introduction on FinOps, explaining why the framework exists and what are its founding principles . Then, it will summarised how the major public cloud providers - AWS, Azure and GCP - interpret the principles that back the FinOps framework.  Lastly, two examples on how FinOps can be included in the daily job of DevOps engineers are described. 
+This essay will provide a comprehensive introduction on FinOps, explaining why the framework exists and what are its founding principles . Then, it will summarised how the major public cloud providers - AWS, Azure and GCP - interpret the principles that back the FinOps framework.  Lastly, two examples on how FinOps can be included in the daily job of DevOps engineers are described. 
 
 # From ITFM to FinOps 
 
@@ -24,9 +24,10 @@ It is worth to notice that after the resources are paid and delivered, there wil
 
 ## The pay-as-you-go shift
 
-Public cloud challenge this scenario and therefore it requires another methodology. 
+Public cloud challenges this scenario and therefore it requires another methodology. 
 
-If we go back to the NIST definition of cloud computing [^2], two (out of five) essential characteristics lead to the idea of finance. For NIST, cloud is on-demand and metered, which both lead to the concept typically referred as pay-as-you-go. *Figure 1* pictures how the model works:
+If we go back to the NIST definition of cloud computing [^2], two (out of five) essential characteristics lead to the idea of finance. For NIST, cloud is on-demand and metered, which both lead to the concept typically referred as pay-as-you-go.
+*Figure 1* pictures how the model works:
 
  1. Users execute cloud operations on-demand.
  2. Results being served as outputs to users or processes. 
@@ -38,28 +39,26 @@ Figure 1: *Pay-as-yo-go model*
 
 One of the most visible effects of the pay-as-you-go model is that financial operations become part of every DevOps engineer’s job because everyone’s actions become responsible and accountable for a share of the bill. Being able to influence costs with their daily actions for an engineer is a new capability that causes however expectation problems. The business expects engineers to be able to control cloud costs, while engineers keep their focus on guarantee the quality and the effectiveness of the delivery, which rarely include thinking about costs.
  
-FinOps creates a playing field for engineers and business teams in which the implications of the pay-as-you-go model are understood first and, then, controlled.
+FinOps creates a playing field for engineers and business teams in which the implications of the pay-as-you-go model are understood first and, then, controlled by everyone.
 
 # The FinOps Framework 
 
-Before diving into the  framework, it is worth to notice that - as many frameworks out there - the FinOps framework can be seen as a reverse engineering of what many companies and teams were already doing in the past to control and plan cloud costs. Many of the concepts are not innovative per se. However, having a structured way to talk about financial operations eases up the adoption of all the controls, processes and best practices that make possible to bring concrete outcomes. 
+Before diving into the  framework, we need to hilight that the FinOps framework - as well as many other frameworks out there - can be seen as a reverse engineering of what many companies and teams were already doing in the past to control and plan cloud costs. Many of the concepts are not innovative per se. However, having a structured way to talk about financial operations eases up the adoption of all the controls, processes and best practices that make possible to bring concrete outcomes. 
 
-The following sections present and comment the most important peculiarities of the framework. For a full reference, please rely on the official sections of the FinOps Foundation [^5].  in the following sections, we will focus on two main parts of the framework -  principles and domains - that are the areas that affect mainly the everyday's work of DevOps engineer. 
-
-Instead of explaining just the mere definitions that can easily retrieved from the web site of the foundation, a perspective on real world implementation of the framework will be given based on my personal 4 years heading the FinOps practice globally within Yoox Net-a-Porter Group with the responsibility of a 2-digits million cloud budget. 
+The following sections present and comment the most important peculiarities of the framework. For a full reference, please rely on the official sections of the FinOps Foundation [^5].  in the following sections, we will focus on foundational principles that represent a consiste guidance in every FinOps adoption.
 
 ## Principles
 
 ### Teams need to collaborate
 FinOps, as highlighted in the previous section, is about making different teams speak the same language. To reach that, strict collaboration among teams is pivotal, especially when it comes to finance and technology.  
 
-Looking at the procurement cycle of public cloud is clear how - without communication - finance is left blind to the reasons why certain invoices must be paid. Establishing a string relationship based on shared KPIs, reports and automations will help to streamline critical processes such as forecasting, budgeting and payment. 
+Looking at the procurement cycle of public cloud is clear how - without communication - finance is left blind to the reasons why certain invoices must be paid. Establishing a strong relationship based on shared KPIs, reports and automations will help to streamline critical processes such as forecasting, budgeting and payment. 
 
 ### Everyone takes ownership for their cloud usage
 
 Public cloud is a distributed service by design, which leads to have a distributed consumption model - i.e. the pay-as-you-go model - in which a control plan is made available to the users through APIs. Everyone - who has the right level of permission - is able therefore to control resources, hence to generate costs. 
 
-Every team therefore must be responsible of cost because they are the ones who are empowered - by design - to generate them. True, a central team can help to have a dedicated focus on finance, however the ultimate goal of FinOps is about establishing a culture of cost efficiency and prevent wastes in the first instance. 
+Every team therefore must be responsible of cost because every team is responsible - by design - to generate them. True, a central team can help to have a dedicated focus on finance. However, the ultimate goal of FinOps is about establishing a culture of cost efficiency and prevent wastes in the first instance. 
 
 ### A centralised team drives FinOps
 
@@ -69,7 +68,7 @@ Especially in the early phase of the FinOps adoption. a dedicated team (or dedic
 
 Data consistency and integrity is probably one of the major issues in technology now considering the nature of most data (i.e. Big Data) that are generated at a higher speed than the one they can understood. Cloud costs falls in the same category with cloud providers providing data that are - more often than not - only eventual consistent. 
 
-For instance, AWS produce a snapshot of the consumption costs into an object called Cost and Usage Report (CUR). The CUR object is update hourly and it contains all the data point needed to calculate the costs of your usage from the beginning of the month. However, some cost dimension such as discounts and support costs are factored only after the month ends. This means that the CUR become eventual consistent on the current month only 8-10 days after  the current month ends. 
+For instance, AWS produce a snapshot of the consumption costs into an object called Cost and Usage Report (CUR). The CUR object is updated hourly and it contains all the data point needed to calculate the costs of your usage from the beginning of the month. However, some cost dimension such as discounts and support costs are factored only after the month ends. This means that the CUR become eventual consistent on the current month only 8-10 days after  the current month ends. 
 
 Considering that finance typically deals with precision, this type of temporary inconsistency can create problems. It is important, therefore, when thinking at processes to design for consistency over time. 
 
@@ -83,7 +82,7 @@ Cloud adoptions are rarely driven by technological reason. Maybe they start from
 
 ### Take advantage of the variable cost model of the cloud.
 
-Public cloud is founded on the  pay-as-yo-go principles, which does not just mean to pay resources just when you need them. It means also to pay for the **right** amount of resources when you need them. Being right it means to optimise sizes and leverage all the options made available by cloud providers. Being able to move from a service billed by the time you use it to a service billed for how much you use it, for instance, gives you leverages that are very hard (or impossible) to have in traditional infrastructure contexts. (i.e. physical data centers). All options can and must be analysed in order to pick the right one.
+Public cloud is founded on the  pay-as-yo-go principle, which does not just mean to pay resources when you need them. It means also to pay for the **right** amount of resources when you need them. Being right it means to optimise sizes and leverage all the options made available by cloud providers. Being able to move from a service billed by the time you use it to a service billed for how much you use it, for instance, gives you leverages that are very hard (or impossible) to have in traditional infrastructure contexts. (i.e. physical data centers). All options can and must be analysed in order to pick the right one.
 
 # Implementing FinOps
 
@@ -132,7 +131,7 @@ The design phase is arguably the most important phase of every project. In fact,
 
 The following is an example (based on a real-case) on how to approach FinOps at design level.  
 
-Let’s consider one of the most simple  architecture: write objects to an object storage. Let’s call our design *Simple Architecture* and let use Amazon S3 as storage service (the same reasoning can be applied to different cloud providers).
+Let’s consider one of the most simple  architectures: write objects to an object storage. Let’s call our design *Simple Architecture* and let use Amazon S3 as storage service (the same reasoning can be applied to different cloud providers).
 
  - **Amazon S3**: the object storage service of Amazon Web Services. Through simple interfaces (i.e. GET, PUT), object storage-type of services like S3 allows users to store objects providing virtually no limits in how much you can store.
 
@@ -192,7 +191,7 @@ Git and Github represent out code repository, respectively local and remote ones
 
 The development uses the paradigm of branching and pull request. Let's see in more details one example of possible flow. 
 
- 1. We commit our first version of a very simple template (using Terraform) that describe an Infrastructure (based on Amazon Web Services) that creates a simple virtual instance (EC2) of, say, 2 vCPU and 8GB of RAM (i.e. m5.large) . The initial version of the template is pushed to GitHub into the *main* branch. 
+ 1. We commit our first version of a very simple template (using Terraform) that describe an Infrastructure (based on Amazon Web Services) that creates a simple virtual instance (EC2) of, say, 2 vCPU and 8GB of RAM (i.e. m5.large) . The initial version of the template is pushed to GitHub into the *main* branch (@ https://github.com/michele-alessandrini/dtm-infracost/blob/main/create-ec2.tf)
  2. After few tests, an increase in size of the instance is needed and a new version of the template is produced. Instead of overwrite the base, the developer creates a branch using *git branch BiggerInstance* and push the new branch to GitHub. The instruction creates a parallel branch named *BiggerInstance*. 
  3. It then creates a pull request in GitHub that let other people of the team know that a new change has been pushed and need a review before to be merged.
  4. Eventually a merged is performed and  *BiggerInstance* is merged back into *main*.
@@ -203,7 +202,7 @@ Now, in order to decide to move to #4, the team might perform some code review t
 
 Infracost[^6] is a software component - both running as container in one environment or consumed as SaaS (Infracost cloud) and that allow users to analyze IaC templates (written in Terraform) and costify them. Most importantly, Infracost allows to integrate with GitHub's pull request in order to generate cost analysis dynamically during a pull request giving the team a new information to use to decide whether a merge is possible. 
 
-Shile waiting for more native integrations, Infracost relies on GitHub Actions for integrations. GitHub actions let you orchestrate workflows by triggering execution of codes in response of GitHub event. In this case, we link the even "on pull request" the link to Infracost SaaS. Security is implemented through a Infracost API Key stored in the GitHub secure registry. 
+While waiting for more native integrations, Infracost relies on GitHub Actions for integrations. GitHub actions let you orchestrate workflows by triggering execution of codes in response of GitHub event. In this case, we link the even "on pull request" the link to Infracost SaaS. Security is implemented through a Infracost API Key stored in the GitHub secure registry. 
 
 ### The result
 
