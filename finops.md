@@ -56,26 +56,43 @@ then, controlled by everyone.
 
 # The FinOps Framework 
 
-Before diving into the  framework, we need to hilight that the FinOps framework - as well as many other frameworks out there - can be seen as a reverse engineering of what many companies and teams were already doing in the past to control and plan cloud costs. Many of the concepts are not innovative per se. However, having a structured way to talk about financial operations eases up the adoption of all the controls, processes and best practices that make possible to bring concrete outcomes. 
+Before diving into the  framework,
+we need to highlight that the FinOps framework - as well as many other frameworks out there - can be seen as a reverse engineering of what many companies and teams were already doing in the past to control and plan cloud costs.
+Many of the concepts are not innovative per se.
+However, having a structured way to talk about financial operations eases up the adoption of all the controls,
+processes and best practices that have potential to bring concrete outcomes. 
 
-The following sections present and comment the most important peculiarities of the framework. For a full reference, please rely on the official sections of the FinOps Foundation [^5].  in the following sections, we will focus on foundational principles that represent a consiste guidance in every FinOps adoption.
+The following sections present and comment the most important peculiarities of the framework.
+For a full reference, please rely on the official sections of the FinOps Foundation [^5].
+In the following sections, we will focus on the foundational principles that represent a guidance for every FinOps adoption.
 
 ## Principles
 
 ### Teams need to collaborate
-FinOps, as highlighted in the previous section, is about making different teams speak the same language. To reach that, strict collaboration among teams is pivotal, especially when it comes to finance and technology.  
+FinOps, as highlighted in the previous section, is about making different teams speak the same language.
+To reach that, strict collaboration among teams is pivotal, especially when it comes to finance and technology.
 
-Looking at the procurement cycle of public cloud is clear how - without communication - finance is left blind to the reasons why certain invoices must be paid. Establishing a strong relationship based on shared KPIs, reports and automations will help to streamline critical processes such as forecasting, budgeting and payment. 
+Looking at the procurement cycle of public cloud is clear how - without communication - finance is left blind to the reasons why certain invoices must be paid.
+Establishing a strong relationship based on shared KPIs,
+reports and automations will help to streamline critical processes such as forecasting,
+budgeting and payment.
 
 ### Everyone takes ownership for their cloud usage
 
-Public cloud is a distributed service by design, which leads to have a distributed consumption model - i.e. the pay-as-you-go model - in which a control plan is made available to the users through APIs. Everyone - who has the right level of permission - is able therefore to control resources, hence to generate costs. 
+Public cloud is a distributed service by design,
+which leads to have a distributed consumption model - i.e. the pay-as-you-go model - in which a control plan is made available to the users through APIs.
+Everyone (with the appropriate permissions) is therefore able to control resources, hence, to generate costs. 
 
-Every team therefore must be responsible of cost because every team is responsible - by design - to generate them. True, a central team can help to have a dedicated focus on finance. However, the ultimate goal of FinOps is about establishing a culture of cost efficiency and prevent wastes in the first instance. 
+Every team therefore must be responsible of the costs, because every team is responsible - by design - to generate them.
+Although a central team can provide financial insights,
+the ultimate goal of FinOps is about establishing a culture of cost efficiency and prevent wastes in the first instance. 
 
 ### A centralised team drives FinOps
 
-Especially in the early phase of the FinOps adoption. a dedicated team (or dedicated time within the job of a person) can accelerate the adoption of best practices across the company. Also, a central team is typically used to deal with shared financial operations such as capacity planning / reservation, budgeting and anomaly detection.
+Especially in the early phase of the FinOps adoption,
+a dedicated team (or dedicated time within the job of a person)
+can accelerate the adoption of best practices across the company.
+Also, a central team is typically used to deal with shared financial operations such as capacity planning / reservation, budgeting and anomaly detection.
 
 ### Reports should be accessible and timely
 
