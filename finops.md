@@ -6,40 +6,53 @@ This essay will provide a comprehensive introduction on FinOps, explaining why t
 
 # From ITFM to FinOps 
 
-FinOps falls into a broader discipline often referred as IT financial management (ITFM), which can be defined as a discipline to govern the cost efficiency of IT.  
+FinOps falls into a broader discipline often referred as IT financial management (ITFM),
+which can be defined as a discipline to govern the cost efficiency of IT.  
 
-Traditionally, ITFM is executed centrally by finance or procurement department to plan and control  the overall spending of IT, mainly referred to on-premise scenarios. Tech departments are marginally involved in the day by day operations because of the intrinsic nature of how IT purchases are done in traditional environments.  
+Traditionally, ITFM is executed centrally by finance or procurement departments to plan and control the overall spending of IT,
+mainly referred to on-premise scenarios.
+Tech departments are marginally involved in the day by day operations because of the intrinsic nature of how IT purchases are done in traditional environments.  
 
-It is worth to note that different companies may have significant difference in the process. For instance, startups or small companies could have a lighter process to buy IT resources. Therefore it is important to understand the core fundamentals behind the process, which will remain consistent across different sizes, industries or stages of maturities.
+It is worth noting that different companies may have significant differences in the process.
+For instance, startups or small companies could have a lighter process to buy IT resources.
+Therefore, it is important to understand the core fundamentals behind the process,
+which will remain consistent across different sizes, industries or stages of maturities.
  
-At high level, we can recognise 5 main steps that drives the procurement of IT resources in a traditional (aka on-premise) environment. 
+At a high level, we can recognise 5 main steps that drive the procurement of IT resources in a traditional (i.e., on-premise) environment. 
 
- 1. The need for a new IT resource is raised typically by technology teams. 
- 2. The feasibility in terms of budget is checked by finance. Potentially, budget can be found at the time of the request. 
- 3. Tech and procurement work together to build up a list of potential providers. If only one provider is possible (i.e. Office 365 is provided only by Microsoft) this phase is skipped. 
- 4. The negotiation starts. This step varies largely. It may include tenders or can be as light as a phone call. Typically, procurement is in charge.
- 5. The contract is signed and the resources are delivered. 
+1. The need for a new IT resource is raised typically by technology teams. 
+2. The feasibility in terms of budget is checked by the finance office. Potentially, budget can be found at the time of the request.
+3. Tech and procurement work together to build up a list of potential providers. If only one provider is possible (i.e. Office 365 is provided only by Microsoft), this phase is skipped. 
+4. The negotiation starts. This step varies largely. It may include tenders or can be as light as a phone call. Typically, procurement is in charge.
+5. The contract is signed and the resources are delivered. 
  
-It is worth to notice that after the resources are paid and delivered, there will be little or no interaction between tech and finance/procurement since there will be no need to agree and control costs after the delivery phase (step #5). In fact, no operating costs are typically generated.
+It is worth to notice that after the resources are paid and delivered, there will be little or no interaction between tech and finance/procurement since there will be no need to agree and control costs after the delivery phase (step #5).
+In fact, no operating costs are typically generated.
 
 ## The pay-as-you-go shift
 
-Public cloud challenges this scenario and therefore it requires another methodology. 
+Public clouds challenge this scenario and, therefore, require another methodology. 
 
-If we go back to the NIST definition of cloud computing [^2], two (out of five) essential characteristics lead to the idea of finance. For NIST, cloud is on-demand and metered, which both lead to the concept typically referred as pay-as-you-go.
+If we go back to the NIST definition of cloud computing [^2], two (out of five) essential characteristics lead to the idea of finance.
+For NIST, cloud is on-demand and metered, which both lead to the concept typically referred as pay-as-you-go.
 *Figure 1* pictures how the model works:
 
- 1. Users execute cloud operations on-demand.
- 2. Results being served as outputs to users or processes. 
- 3. Each cloud operation is metered, both for logging and invoicing purposes.
- 4. An invoice is sent to the users based on the real usage.
+1. Users execute cloud operations on-demand.
+2. Results being served as outputs to users or processes. 
+3. Each cloud operation is metered, both for logging and invoicing purposes.
+4. An invoice is sent to the users based on the real usage.
 
-![enter image description here](https://dtm-software-engineer.s3.eu-south-1.amazonaws.com/pay-as-yo-go.png)
-Figure 1: *Pay-as-yo-go model*
+![Pay-as-you-go model](https://dtm-software-engineer.s3.eu-south-1.amazonaws.com/pay-as-yo-go.png)
+Figure 1: *Pay-as-you-go model*
 
-One of the most visible effects of the pay-as-you-go model is that financial operations become part of every DevOps engineer’s job because everyone’s actions become responsible and accountable for a share of the bill. Being able to influence costs with their daily actions for an engineer is a new capability that causes however expectation problems. The business expects engineers to be able to control cloud costs, while engineers keep their focus on guarantee the quality and the effectiveness of the delivery, which rarely include thinking about costs.
+One of the most visible effects of the pay-as-you-go model is that financial operations become part of every DevOps engineer’s job because everyone’s actions become responsible and accountable for a share of the bill.
+Being able to influence costs with their daily actions for an engineer is a new capability that causes however expectation problems.
+The business expects engineers to be able to control cloud costs,
+while engineers keep their focus on guarantee the quality and the effectiveness of the delivery,
+which rarely includes thinking about costs.
  
-FinOps creates a playing field for engineers and business teams in which the implications of the pay-as-you-go model are understood first and, then, controlled by everyone.
+FinOps creates a playing field for engineers and business teams in which the implications of the pay-as-you-go model are understood first and,
+then, controlled by everyone.
 
 # The FinOps Framework 
 
