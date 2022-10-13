@@ -14,7 +14,7 @@ jobs:
       pull-requests: write
 
     env:
-      TF_ROOT: examples/terraform-project/code
+      TF_ROOT: .
       # This instructs the CLI to send cost estimates to Infracost Cloud. Our SaaS product
       #   complements the open source CLI by giving teams advanced visibility and controls.
       #   The cost estimates are transmitted in JSON format and do not contain any cloud
@@ -67,6 +67,26 @@ jobs:
                           --format=json \
                           --compare-to=/tmp/infracost-base.json \
                           --out-file=/tmp/infracost.json
+						  
+     # Update CSV file
+     - name: Generate Infracost diff
+	 - uses: gr2m/write-csv-file-action@v1.x
+	           with:
+	             path: data/costs.csv
+	             columns: open issues,closed issues,open pull requests,closed pull requests,merged pull requests
+	             "open issues": ${{ fromJson(steps.stats.outputs.data).openIssues }}
+	             "closed issues": ${{ fromJson(steps.stats.outputs.data).closedIssues }}
+	             "open pull requests": ${{ fromJson(steps.stats.outputs.data).openPullRequests }}
+	             "closed pull requests": ${{ fromJson(steps.stats.outputs.data).closedPullRequests }}
+	             "merged pull requests": ${{ fromJson(steps.stats.outputs.data).mergedPullRequests }}
+	         # push updated file back to main branch
+	         - run: git config --local user.email "action@github.com"
+	         - run: git config --local user.name "GitHub Action"
+	         - run: git add data
+	         - run: git commit -m "data/costs.csv updated"
+	         - run: "git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD"
+	           env:
+	             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Posts a comment to the PR using the 'update' behavior.
       # This creates a single comment and updates it. The "quietest" option.
