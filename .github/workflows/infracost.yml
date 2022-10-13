@@ -69,25 +69,13 @@ jobs:
                           --out-file=/tmp/infracost.json
 						  
      # Update CSV file
-     - name: Generate Infracost diff
-	 - uses: gr2m/write-csv-file-action@v1.x
-	           with:
-	             path: data/costs.csv
-	             columns: open issues,closed issues,open pull requests,closed pull requests,merged pull requests
-	             "open issues": ${{ fromJson(steps.stats.outputs.data).openIssues }}
-	             "closed issues": ${{ fromJson(steps.stats.outputs.data).closedIssues }}
-	             "open pull requests": ${{ fromJson(steps.stats.outputs.data).openPullRequests }}
-	             "closed pull requests": ${{ fromJson(steps.stats.outputs.data).closedPullRequests }}
-	             "merged pull requests": ${{ fromJson(steps.stats.outputs.data).mergedPullRequests }}
-	         # push updated file back to main branch
-	         - run: git config --local user.email "action@github.com"
-	         - run: git config --local user.name "GitHub Action"
-	         - run: git add data
-	         - run: git commit -m "data/costs.csv updated"
-	         - run: "git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git HEAD"
-	           env:
-	             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      - uses: gr2m/write-csv-file-action@v1.x
+        with:
+          path: data/stats.csv
+          columns: Column 1, Column 2
+          "Column 1": 1
+          "Column 2": 2
+		  
       # Posts a comment to the PR using the 'update' behavior.
       # This creates a single comment and updates it. The "quietest" option.
       # The other valid behaviors are:
