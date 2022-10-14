@@ -5,7 +5,7 @@ module "ec2_instance" {
   name = "single-instance"
 
   ami                    = "ami-ebd02392"
-  instance_type          = "c5.4xlarge"
+  instance_type          = "c5.8xlarge"
   key_name               = "user1"
   monitoring             = true
   vpc_security_group_ids = ["sg-12345678"]
