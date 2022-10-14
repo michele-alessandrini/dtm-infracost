@@ -1,5 +1,8 @@
 name: InfracostToSNS
 
+runs:
+  using: 'node16'
+
 on: 
   pull_request:
     types: [closed]
