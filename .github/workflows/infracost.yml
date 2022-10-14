@@ -68,14 +68,6 @@ jobs:
                           --compare-to=/tmp/infracost-base.json \
                           --out-file=/tmp/infracost.json
 						  
-     # Update CSV file
-      - uses: gr2m/write-csv-file-action@v1.x
-        with:
-          path: data/stats.csv
-          columns: Column 1, Column 2
-          "Column 1": 1
-          "Column 2": 2
-		  
       # Posts a comment to the PR using the 'update' behavior.
       # This creates a single comment and updates it. The "quietest" option.
       # The other valid behaviors are:
