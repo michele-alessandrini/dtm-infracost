@@ -90,4 +90,5 @@ jobs:
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Automated Change
+          commit_message: CSV update
+          file_pattern: 'data/*.csv'
