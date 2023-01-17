@@ -86,11 +86,8 @@ jobs:
           columns: pull_request,delta
           "pull_request": ${{ fromJson(steps.stats.outputs.data).openIssues }}
           "delta": cat /tmp/infracost.json | jq -r '.projects[0].diff.totalMonthlyCost'
-      - run: git config --local user.email "michele.alessandrini@gmail.com"
-      - run: git config --local user.name "GitHub Action"
-      - run: git add .
-      - run: git commit -m "data.csv updated"
-      - run: "git push https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git main"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-           
+          
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Automated Change
