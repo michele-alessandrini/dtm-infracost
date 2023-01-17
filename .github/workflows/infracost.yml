@@ -78,7 +78,7 @@ jobs:
                                      --pull-request=${{github.event.pull_request.number}} \
                                      --behavior=update
 
-      - name: Append a lince into a CSV
+      - name: Append a line into a CSV
         uses: gr2m/write-csv-file-action@v1.x
         if: github.event.pull_request.merged == true
         with:
