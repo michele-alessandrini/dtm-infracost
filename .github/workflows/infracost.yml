@@ -82,6 +82,11 @@ jobs:
             echo "INFRACOST_STEP_NUMBER=$(cat /tmp/infracost.json | jq -r '.metadata.vcsPullRequestId')" >> $GITHUB_OUTPUT
             echo "COST=$(cat /tmp/infracost.json | jq -r '.diffTotalMonthlyCost')" >> $GITHUB_OUTPUT
 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: /tmp/*
+
       - name: Append a line into a CSV
         uses: gr2m/write-csv-file-action@v1.x
         with:
@@ -90,6 +95,8 @@ jobs:
           "pr-date": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_DATE }}
           "pr-number": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_NUMBER }}
           "cost": ${{ steps.post-comment-step.outputs.COST }}
+          
+          
           
       - name: Commit changes
         env:
