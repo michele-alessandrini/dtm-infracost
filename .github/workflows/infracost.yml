@@ -84,7 +84,7 @@ jobs:
           path: data/list.csv
           columns: pull_request,delta
           "pull_request": ${{github.event.pull_request.number}} 
-          "delta": cat /tmp/infracost.json | jq -r '.projects[0].diff.totalMonthlyCost'
+          "delta": $(cat /tmp/infracost.json | jq -r '.projects[0].diff.totalMonthlyCost')
           
       - name: Commit changes
         env:
