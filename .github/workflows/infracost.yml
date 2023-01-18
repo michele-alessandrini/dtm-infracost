@@ -82,7 +82,7 @@ jobs:
         uses: gr2m/write-csv-file-action@v1.x
         with:
           path: data/list.csv
-          columns:
+          columns: pull_request,delta
           "pull_request": ${{github.event.pull_request.number}} 
           "delta": cat /tmp/infracost.json | jq -r '.projects[0].diff.totalMonthlyCost'
           
