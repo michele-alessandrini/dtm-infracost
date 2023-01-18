@@ -64,9 +64,9 @@ jobs:
         with:
           path: data/list.csv
           columns: commit-date,commit-sha,cost
-          "commit-date": ${{ steps.cat-vars.outputs.INFRACOST_STEP_DATE }}
-          "commit-sha": ${{ steps.cat-vars.outputs.INFRACOST_STEP_SHA }}
-          "cost": ${{ steps.cat-vars.outputs.COST }}
+          "commit-date": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_DATE }}
+          "commit-sha": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_SHA }}
+          "cost": ${{ steps.post-comment-step.outputs.COST }}
   
       - name: Commit changes
         env:
