@@ -1,9 +1,6 @@
 
 on: [pull_request]
-env:
-  # If you use private modules you'll need this env variable to use
-  # the same ssh-agent socket value across all jobs & steps.
-  SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+
 jobs:
   infracost:
     name: Infracost
@@ -58,8 +55,24 @@ jobs:
                                      --github-token=${{github.token}} \
                                      --pull-request=${{github.event.pull_request.number}} \
                                      --behavior=update
+            echo "INFRACOST_STEP_DATE=$(cat infracost.json | jq -r '.metadata.vcsCommitTimestamp')" >> $GITHUB_OUTPUT
+            echo "INFRACOST_STEP_SHA=$(cat infracost.json | jq -r '.metadata.vcsCommitSha')" >> $GITHUB_OUTPUT
+            echo "COST=$(cat infracost.json | jq -r '.diffTotalMonthlyCost')" >> $GITHUB_OUTPUT
 
-      - uses: actions/upload-artifact@v3
+      - name: Append a line into a CSV
+        uses: gr2m/write-csv-file-action@v1.x
         with:
-          name: infracost-json
-          path: /tmp/infracost.json
+          path: data/list.csv
+          columns: commit-date,commit-sha,cost
+          "commit-date": ${{ steps.cat-vars.outputs.INFRACOST_STEP_DATE }}
+          "commit-sha": ${{ steps.cat-vars.outputs.INFRACOST_STEP_SHA }}
+          "cost": ${{ steps.cat-vars.outputs.COST }}
+  
+      - name: Commit changes
+        env:
+          GITHUB_TOKEN: ${{github.token}}
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: CSV update
+          file_pattern: 'data/*.csv'
+          ref: ${{ github.head_ref }}
