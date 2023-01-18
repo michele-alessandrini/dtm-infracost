@@ -83,7 +83,7 @@ jobs:
         with:
           path: data/list.csv
           columns: pull_request,delta
-          "pull_request": ${{ fromJson(steps.stats.outputs.data).openIssues }}
+          "pull_request": ${{github.event.pull_request.number}} 
           "delta": cat /tmp/infracost.json | jq -r '.projects[0].diff.totalMonthlyCost'
           
       - name: Commit changes
