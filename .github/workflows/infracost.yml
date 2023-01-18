@@ -78,7 +78,7 @@ jobs:
                                      --github-token=${{github.token}} \
                                      --pull-request=${{github.event.pull_request.number}} \
                                      --behavior=update
-            echo "INFRACOST_STEP_DATE=$(cat /tmp/infracost.json | jq -r '.metadata.commitTimestamp')" >> $GITHUB_OUTPUT
+            echo "INFRACOST_STEP_DATE=$(cat /tmp/infracost.json | jq -r '.metadata.branch')" >> $GITHUB_OUTPUT
             echo "INFRACOST_STEP_HASH=$(cat /tmp/infracost.json | jq -r '.metadata.commit')" >> $GITHUB_OUTPUT
             echo "COST=$(cat /tmp/infracost.json | jq -r '.diffTotalMonthlyCost')" >> $GITHUB_OUTPUT
 
