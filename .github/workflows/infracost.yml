@@ -78,17 +78,17 @@ jobs:
                                      --github-token=${{github.token}} \
                                      --pull-request=${{github.event.pull_request.number}} \
                                      --behavior=update
-            echo "INFRACOST_STEP_DATE=$(cat /tmp/infracost.json | jq -r '.metadata.branch')" >> $GITHUB_OUTPUT
-            echo "INFRACOST_STEP_HASH=$(cat /tmp/infracost.json | jq -r '.metadata.commit')" >> $GITHUB_OUTPUT
+            echo "INFRACOST_STEP_DATE=$(cat /tmp/infracost.json | jq -r '.timeGenerated')" >> $GITHUB_OUTPUT
+            echo "INFRACOST_STEP_NUMBER=$(cat /tmp/infracost.json | jq -r '.metadata.vcsPullRequestId')" >> $GITHUB_OUTPUT
             echo "COST=$(cat /tmp/infracost.json | jq -r '.diffTotalMonthlyCost')" >> $GITHUB_OUTPUT
 
       - name: Append a line into a CSV
         uses: gr2m/write-csv-file-action@v1.x
         with:
           path: data/list.csv
-          columns: commit-date,commit-hash,cost
-          "commit-date": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_DATE }}
-          "commit-hash": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_HASH }} 
+          columns: pr-date,pr-number,cost
+          "pr-date": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_DATE }}
+          "pr-number": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_NUMBER }}
           "cost": ${{ steps.post-comment-step.outputs.COST }}
           
       - name: Commit changes
