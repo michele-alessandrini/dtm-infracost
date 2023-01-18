@@ -82,12 +82,18 @@ jobs:
         uses: gr2m/write-csv-file-action@v1.x
         with:
           path: data/list.csv
-          columns: pull_request,delta
+          columns:
           "pull_request": ${{github.event.pull_request.number}} 
           "delta": cat /tmp/infracost.json | jq -r '.projects[0].diff.totalMonthlyCost'
           
       - name: Commit changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        permissions:
+          contents: write
+          deployment: write
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: CSV update
           file_pattern: 'data/*.csv'
+          ref: ${{ github.head_ref }}
