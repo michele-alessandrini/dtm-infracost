@@ -100,5 +100,5 @@ jobs:
           file_pattern: 'data/*.csv'
           ref: ${{ github.head_ref }}
           
-     - name: Download all workflow run artifacts
-       uses: actions/download-artifact@v3
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v3
