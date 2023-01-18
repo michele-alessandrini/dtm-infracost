@@ -77,6 +77,7 @@ jobs:
                                      --github-token=${{github.token}} \
                                      --pull-request=${{github.event.pull_request.number}} \
                                      --behavior=update
+            echo "DELTA=$(cat /tmp/infracost.json | jq -r '.projects[0].diff.totalMonthlyCost')" >> $GITHUB_ENV
 
       - name: Append a line into a CSV
         uses: gr2m/write-csv-file-action@v1.x
@@ -84,7 +85,7 @@ jobs:
           path: data/list.csv
           columns: pull_request,delta
           "pull_request": ${{github.event.pull_request.number}} 
-          "delta": $(cat /tmp/infracost.json | jq -r '.projects[0].diff.totalMonthlyCost')
+          "delta": "${{ env.DELTA }}"
           
       - name: Commit changes
         env:
