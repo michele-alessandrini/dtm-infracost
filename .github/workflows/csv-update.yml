@@ -3,13 +3,9 @@
 on:
   pull_request:
     types: [closed]
-env:
-  # If you use private modules you'll need this env variable to use
-  # the same ssh-agent socket value across all jobs & steps.
-  SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+
 jobs:
   csv_update:
-    if: github.event.pull_request.merged == 'true'
     name: UpdateCSV
     runs-on: ubuntu-latest
     permissions:
