@@ -1,2 +1,3 @@
 pull_request,delta
 
+29,$(cat /tmp/infracost.json | jq -r '.projects[0].diff.totalMonthlyCost')
