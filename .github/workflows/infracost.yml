@@ -87,7 +87,7 @@ jobs:
         with:
           path: data/list.csv
           columns: commit-date,commit-hash,cost
-          "commit-date": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_DATE }}"
+          "commit-date": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_DATE }}
           "commit-hash": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_HASH }} 
           "cost": ${{ steps.post-comment-step.outputs.COST }}
           
