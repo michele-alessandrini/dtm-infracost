@@ -99,6 +99,3 @@ jobs:
           commit_message: CSV update
           file_pattern: 'data/*.csv'
           ref: ${{ github.head_ref }}
-          
-      - name: Download all workflow run artifacts
-        uses: actions/download-artifact@v3
