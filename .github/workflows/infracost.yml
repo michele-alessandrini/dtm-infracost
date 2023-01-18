@@ -77,15 +77,18 @@ jobs:
                                      --github-token=${{github.token}} \
                                      --pull-request=${{github.event.pull_request.number}} \
                                      --behavior=update
-            echo "DELTA=$(cat /tmp/infracost.json | jq -r '.projects[0].diff.totalMonthlyCost')" >> $GITHUB_ENV
+            echo "DATE=$(cat /tmp/infracost.json | jq -r '.metadata.commitTimestamp')" >> $GITHUB_ENV
+            echo "HASH=$(cat /tmp/infracost.json | jq -r '.metadata.commit')" >> $GITHUB_ENV
+            echo "COST=$(cat /tmp/infracost.json | jq -r '.diffTotalMonthlyCost')" >> $GITHUB_ENV
 
       - name: Append a line into a CSV
         uses: gr2m/write-csv-file-action@v1.x
         with:
           path: data/list.csv
-          columns: pull_request,delta
-          "pull_request": ${{github.event.pull_request.number}} 
-          "delta": "${{ env.DELTA }}"
+          columns: commit-date,commit-hash,cost
+          "commit-date": ${{ env.DATE }} 
+          "commit-hash": ${{ env.HASH }} 
+          "cost": ${{ env.COST }}
           
       - name: Commit changes
         env:
