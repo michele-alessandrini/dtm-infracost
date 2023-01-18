@@ -10,8 +10,9 @@ jobs:
     name: Infracost
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
+      deployment: write
 
     env:
       TF_ROOT: .
@@ -88,10 +89,7 @@ jobs:
           
       - name: Commit changes
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        permissions:
-          contents: write
-          deployment: write
+          GITHUB_TOKEN: ${{github.token}}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: CSV update
