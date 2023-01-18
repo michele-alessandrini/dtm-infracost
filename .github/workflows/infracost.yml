@@ -71,24 +71,25 @@ jobs:
       #   new - Create a new cost estimate comment on every push.
       # See https://www.infracost.io/docs/features/cli_commands/#comment-on-pull-requests for other options.
       - name: Post Infracost comment
+        id: post-comment-step
         run: |
             infracost comment github --path=/tmp/infracost.json \
                                      --repo=$GITHUB_REPOSITORY \
                                      --github-token=${{github.token}} \
                                      --pull-request=${{github.event.pull_request.number}} \
                                      --behavior=update
-            echo "DATE=$(cat /tmp/infracost.json | jq -r '.metadata.commitTimestamp')" >> $GITHUB_ENV
-            echo "HASH=$(cat /tmp/infracost.json | jq -r '.metadata.commit')" >> $GITHUB_ENV
-            echo "COST=$(cat /tmp/infracost.json | jq -r '.diffTotalMonthlyCost')" >> $GITHUB_ENV
+            echo "INFRACOST_STEP_DATE=$(cat /tmp/infracost.json | jq -r '.metadata.commitTimestamp')" >> $GITHUB_OUTPUT
+            echo "INFRACOST_STEP_HASH=$(cat /tmp/infracost.json | jq -r '.metadata.commit')" >> $GITHUB_OUTPUT
+            echo "COST=$(cat /tmp/infracost.json | jq -r '.diffTotalMonthlyCost')" >> $GITHUB_OUTPUT
 
       - name: Append a line into a CSV
         uses: gr2m/write-csv-file-action@v1.x
         with:
           path: data/list.csv
           columns: commit-date,commit-hash,cost
-          "commit-date": ${{ env.DATE }} 
-          "commit-hash": ${{ env.HASH }} 
-          "cost": ${{ env.COST }}
+          "commit-date": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_DATE }}"
+          "commit-hash": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_HASH }} 
+          "cost": ${{ steps.post-comment-step.outputs.COST }}
           
       - name: Commit changes
         env:
