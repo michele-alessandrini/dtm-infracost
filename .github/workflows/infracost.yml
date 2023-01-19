@@ -79,15 +79,17 @@ jobs:
                                      --behavior=update
             echo "INFRACOST_STEP_DATE=$(cat /tmp/infracost.json | jq -r '.metadata.vcsCommitTimestamp')" >> $GITHUB_OUTPUT
             echo "INFRACOST_STEP_SHA=$(cat /tmp/infracost.json | jq -r '.metadata.vcsCommitSha')" >> $GITHUB_OUTPUT
-            echo "COST=$(cat /tmp/infracost.json | jq -r '.diffTotalMonthlyCost')" >> $GITHUB_OUTPUT
+            echo "COST_DELTA=$(cat /tmp/infracost.json | jq -r '.diffTotalMonthlyCost')" >> $GITHUB_OUTPUT
+            echo "COST_TOTAL=$(cat /tmp/infracost.json | jq -r '.totalMonthlyCost')" >> $GITHUB_OUTPUT
       - name: Append a line into a CSV
         uses: gr2m/write-csv-file-action@v1.x
         with:
           path: data/list.csv
-          columns: c-date,c-sha,cost
+          columns: c-date,c-sha,cost-delta,cost-total
           "c-date": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_DATE }}
           "c-sha": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_SHA }}
-          "cost": ${{ steps.post-comment-step.outputs.COST }}
+          "cost-delta": ${{ steps.post-comment-step.outputs.COST_DELTA }}
+          "cost-total": ${{ steps.post-comment-step.outputs.COST_TOTAL }}
           
       - name: Commit changes
         env:
