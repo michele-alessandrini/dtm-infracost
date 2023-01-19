@@ -63,10 +63,11 @@ jobs:
         uses: gr2m/write-csv-file-action@v1.x
         with:
           path: data/list.csv
-          columns: commit-date,commit-sha,cost
+          columns: commit-date,commit-hash,cost
           "commit-date": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_DATE }}
-          "commit-sha": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_SHA }}
+          "commit-hash": ${{ steps.post-comment-step.outputs.INFRACOST_STEP_SHA }} 
           "cost": ${{ steps.post-comment-step.outputs.COST }}
+
   
       - name: Commit changes
         env:
