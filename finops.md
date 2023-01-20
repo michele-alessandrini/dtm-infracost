@@ -188,7 +188,8 @@ From a FinOps perspective, this means that a template gives a static picture of 
 We will base our example on a very simple tool chain, which includes: 
  - Git
  - GitHub 
- - Infracost 
+ - Infracost
+ - Amazon Web Services (to show a possible integration) 
 
 #### Git / Github
 
@@ -209,6 +210,25 @@ Infracost[^6] is a software component – both running as container in one envir
 
 While waiting for more native integrations, Infracost relies on GitHub Actions for integrations. GitHub actions let you orchestrate workflows by triggering execution of codes in response to an GitHub event. In this case, we link the even "on pull request" the link to Infracost SaaS. Security is implemented through an Infracost API Key stored in the GitHub secure registry.
 
+The Github actions that allow Infracost to comment the pull request  with the information around costs does also replicate the core information on costs in a CSV file that is, eventually, merged to the main branch if the pull request is merged. t  
+
+#### Amazon Web Services (AWS)
+
+AWS is a public cloud provider that offer a variey of cloud services, ranging from traditional computing/storgae services to more managed and cloud native offering. 
+
+In our example, we use AWS' native components to build a simple data pipeline to bring - everytime a commit happens in the main branch - the CSV file in the cloud so it can be used - application wise - to build dashboards.
+
+To achieve that, we rely on:
+
+ - AWS Code Pipeline to copy the repository to Amazon S3 each time a commit happens in the main branch.
+ - Amazon Quicksight - a managed tool of business intelligence - to query the data copied and produce dashboards and reports.  
+
+Figure 3 show the final dataflow. 
+
+![AWS Data flow](https://dtm-software-engineer.s3.eu-south-1.amazonaws.com/infra-to-aws.jpg)
+
+*Figure 3: AWS Data flow*
+
 ### The result
 
 Infracost injects into the pull request all the information around new costs (in case of merge) and allows you to understand clearly the consequences of a merge from a financial perspective.
@@ -221,14 +241,32 @@ You can see the live result also at https://github.com/michele-alessandrini/dtm-
 
 Using the SaaS version of the service also allows access useful dashboards (as shown in the following pictures) to make sense of more complex context of CI/CD. 
 
-![](https://dtm-software-engineer.s3.eu-south-1.amazonaws.com/infracost_1.png)
+![Summary of pull requests activities](https://dtm-software-engineer.s3.eu-south-1.amazonaws.com/infracost_1.png)
 
 *Figure 4: Summary of pull requests activities*
 
- 
- ![enter image description here](https://dtm-software-engineer.s3.eu-south-1.amazonaws.com/infracost_2.png)
+
+ ![Summary of GitHub activities](https://dtm-software-engineer.s3.eu-south-1.amazonaws.com/infracost_2.png)
 
 *Figure 5: Summary of GitHub activities and their financial impacts*
+
+In terms of data, when a pull request is merged the CSV file containing the core information about costs is updated. You can find the data here: https://github.com/michele-alessandrini/dtm-infracost/blob/main/data/list.csv.
+
+Figure 5 shows the CSV main fields. Fields' values are taken by the deatiled report that Infracost generated during the pull request and that it is available withing the Githb action in a json format.[^8] 
+
+ ![CSV file updated](https://dtm-software-engineer.s3.eu-south-1.amazonaws.com/csv.png)
+
+*Figure 5: CSV file is updated after every merge*
+ 
+The file is then copied into the S3 bucket (see AWS reference architecture) and used as data source by Amazon Quicksight to generate meanginful dashaboards and reports. 
+
+Figure 6 shows an example that shows how the differnt commit hashes affect the total monthly cost. The dahsboard can be useful to developers to understand immediately the impact of a change and act timely if there are problems. 
+
+ ![Impact of commits on total monthly costs](https://dtm-software-engineer.s3.eu-south-1.amazonaws.com/dashboard.png)
+
+*Figure 6: Impact of commits on total monthly costs*
+
+
 
 # Conclusion
 
@@ -249,3 +287,4 @@ Engineers should focus on understanding that starting to analyse cost implicatio
 [^5]: FinOps Framework https://www.finops.org/framework/principles/
 [^6]: https://www.infracost.io/
 [^7]: AWS Well Architected Framework - https://aws.amazon.com/architecture/well-architected/ Google Cloud Architecture Framework - https://cloud.google.com/architecture/framework Azure Well Architected Framework - https://docs.microsoft.com/it-it/azure/architecture/framework/
+[^8]: Infracost JSON format - https://www.infracost.io/docs/features/json_output_format/
